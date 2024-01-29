@@ -123,7 +123,7 @@ module.exports = function(options) {
           type: 'list',
           name: 'type',
           when: !options.skipType,
-          message: "Select the type of change that you're committing:",
+          message: (options.txtType || "Select the type of change that you're committing") + ":",
           choices: choices,
           default: options.skipType ? '' : options.defaultType
         },
@@ -131,7 +131,7 @@ module.exports = function(options) {
           type: 'input',
           name: 'jira',
           message:
-            'Enter JIRA issue (' +
+            (options.txtJiraIssue || 'Enter the JIRA task prefix') + ' (' +
             getFromOptionsOrDefaults('jiraPrefix') +
             '-12345)' +
             (options.jiraOptional ? ' (optional)' : '') +
@@ -154,8 +154,8 @@ module.exports = function(options) {
           when: !options.skipScope,
           choices: hasScopes ? scopes : undefined,
           message:
-            'What is the scope of this change (e.g. component or file name): ' +
-            (hasScopes ? '(select from the list)' : '(press enter to skip)'),
+            `${options.txtScope}: ` +
+            (hasScopes ? `(${options.txtScopeListConfirmation})` : `(${options.txtScopeInputConfirmation})`),
           default: options.defaultScope,
           filter: function(value) {
             return value.trim().toLowerCase();

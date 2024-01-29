@@ -16,5 +16,11 @@ module.exports = {
   jiraLocation: 'pre-description',
   jiraPrepend: '',
   jiraAppend: '',
-  exclamationMark: false
+  exclamationMark: false,
+
+  txtJiraIssue: 'Insira o prefixo da tarefa do JIRA',
+  txtType: 'Selecione o tipo de alteração',
+  txtScope: 'What is the scope of this change (e.g. component or file name)',
+  txtScopeListConfirmation: 'select from the list',
+  txtScopeInputConfirmation: 'press enter to skip',
 };
