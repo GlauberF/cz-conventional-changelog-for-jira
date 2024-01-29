@@ -89,24 +89,81 @@ const options = {
     config.exclamationMark,
     defaults.exclamationMark
   ),
-
-  txtJiraIssue: 'Enter the JIRA task prefix',
-  txtType: 'Select the type of change that you\'re committing',
-  txtScope: 'What is the scope of this change (e.g. component or file name)',
-  txtScopeListConfirmation: 'select from the list',
-  txtScopeInputConfirmation: 'press enter to skip',
-  txtCustomScope: 'Type custom scope (press enter to skip)',
-  txtSubject: 'Write a short, imperative tense description of the change',
-  txtSubjectMinCharacters: 'The subject must have at least {MIN_VALUE} characters',
-  txtBody: 'Provide a longer description of the change: (press enter to skip)',
-  txtConfirmBreaking: 'Are there any breaking changes?',
-  txtDescribeBreaking: 'Describe the breaking changes',
-  txtConfirmIssueAffected: 'Does this change affect any open issues?',
-  txtIssuesBody: 'If issues are closed, the commit requires a body. Please enter a longer description of the commit itself',
-  txtIssuesRef: 'Add issue references (e.g. "fix #123", "re #123".)',
-  txtDoCommit: 'Are you sure that you want to commit?'
-
-
+  txtJiraIssue: getEnvOrConfig(
+    process.env.CZ_TXT_TYPE,
+    config.txtJiraIssue,
+    defaults.txtJiraIssue
+  ),
+  txtType: getEnvOrConfig(
+    process.env.CZ_TXT_JIRA_ISSUE,
+    config.txtType,
+    defaults.txtType
+  ),
+  txtScope: getEnvOrConfig(
+    process.env.CZ_TXT_SCOPE,
+    config.txtScope,
+    defaults.txtScope
+  ),
+  txtScopeListConfirmation: getEnvOrConfig(
+    process.env.CZ_TXT_SCOPE_LIST_CONFIRMATION,
+    config.txtScopeListConfirmation,
+    defaults.txtScopeListConfirmation
+  ),
+  txtScopeInputConfirmation: getEnvOrConfig(
+    process.env.CZ_TXT_SCOPE_INPUT_CONFIRMATION,
+    config.txtScopeInputConfirmation,
+    defaults.txtScopeInputConfirmation
+  ),
+  txtCustomScope: getEnvOrConfig(
+    process.env.CZ_TXT_CUSTOM_SCOPE,
+    config.txtCustomScope,
+    defaults.txtCustomScope
+  ),
+  txtSubject: getEnvOrConfig(
+    process.env.CZ_TXT_SUBJECT,
+    config.txtSubject,
+    defaults.txtSubject
+  ),
+  txtSubjectMinCharacters: getEnvOrConfig(
+    process.env.CZ_TXT_SUBJECT_MIN_CHARACTERS,
+    config.txtSubjectMinCharacters,
+    defaults.txtSubjectMinCharacters
+  ),
+  txtBody: getEnvOrConfig(
+    process.env.CZ_TXT_BODY,
+    config.txtBody,
+    defaults.txtBody
+  ),
+  txtConfirmBreaking: getEnvOrConfig(
+    process.env.CZ_TXT_CONFIRM_BREAKING,
+    config.txtConfirmBreaking,
+    defaults.txtConfirmBreaking
+  ),
+  txtDescribeBreaking: getEnvOrConfig(
+    process.env.CZ_TXT_DESCRIBE_BREAKING,
+    config.txtDescribeBreaking,
+    defaults.txtDescribeBreaking
+  ),
+  txtConfirmIssueAffected: getEnvOrConfig(
+    process.env.CZ_TXT_CONFIRM_ISSUE_AFFECTED,
+    config.txtConfirmIssueAffected,
+    defaults.txtConfirmIssueAffected
+  ),
+  txtIssuesBody: getEnvOrConfig(
+    process.env.CZ_TXT_ISSUES_BODY,
+    config.txtIssuesBody,
+    defaults.txtIssuesBody
+  ),
+  txtIssuesRef: getEnvOrConfig(
+    process.env.CZ_TXT_ISSUES_REF,
+    config.txtIssuesRef,
+    defaults.txtIssuesRef
+  ),
+  txtDoCommit: getEnvOrConfig(
+    process.env.CZ_TXT_DO_COMMIT,
+    config.txtDoCommit,
+    defaults.txtDoCommit
+  )
 };
 
 (function(options) {
