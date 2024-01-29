@@ -1,4 +1,4 @@
-var conventionalCommitTypes = require('./types');
+const conventionalCommitTypes = require('./types');
 
 module.exports = {
   types: conventionalCommitTypes,
@@ -26,4 +26,10 @@ module.exports = {
   txtCustomScope: 'Type custom scope (press enter to skip)',
   txtSubject: 'Write a short, imperative tense description of the change',
   txtSubjectMinCharacters: 'The subject must have at least {MIN_VALUE} characters',
+  txtBody: 'Provide a longer description of the change: (press enter to skip)',
+  txtConfirmBreaking: 'Are there any breaking changes?',
+  txtDescribeBreaking: 'Describe the breaking changes',
+  txtConfirmIssueAffected: 'Does this change affect any open issues?',
+  txtIssuesBody: 'If issues are closed, the commit requires a body. Please enter a longer description of the commit itself',
+
 };

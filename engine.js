@@ -194,21 +194,20 @@ module.exports = function(options) {
           type: 'input',
           name: 'body',
           when: !options.skipDescription,
-          message:
-            'Provide a longer description of the change: (press enter to skip)\n',
+          message: `${options.txtBody}\n`,
           default: options.defaultBody
         },
         {
           type: 'confirm',
           name: 'isBreaking',
           when: !options.skipBreaking,
-          message: 'Are there any breaking changes?',
+          message: options.txtConfirmBreaking,
           default: false
         },
         {
           type: 'confirm',
           name: 'isBreaking',
-          message: 'You do know that this will bump the major version, are you sure?',
+          message: options.txtConfirmBreakingMajorVersion,
           default: false,
           when: function(answers) {
             return answers.isBreaking;
@@ -217,16 +216,15 @@ module.exports = function(options) {
         {
           type: 'input',
           name: 'breaking',
-          message: 'Describe the breaking changes:\n',
+          message: `${options.txtDescribeBreaking}:\n`,
           when: function(answers) {
             return answers.isBreaking;
           }
         },
-
         {
           type: 'confirm',
           name: 'isIssueAffected',
-          message: 'Does this change affect any open issues?',
+          message: options.txtConfirmIssueAffected,
           default: !!options.defaultIssues,
           when: !options.jiraMode
         },
@@ -235,7 +233,7 @@ module.exports = function(options) {
           name: 'issuesBody',
           default: '-',
           message:
-            'If issues are closed, the commit requires a body. Please enter a longer description of the commit itself:\n',
+            `${options.txtIssuesBody}:\n`,
           when: function(answers) {
             return (
               answers.isIssueAffected && !answers.body && !answers.breakingBody
