@@ -31,5 +31,6 @@ module.exports = {
   txtDescribeBreaking: 'Describe the breaking changes',
   txtConfirmIssueAffected: 'Does this change affect any open issues?',
   txtIssuesBody: 'If issues are closed, the commit requires a body. Please enter a longer description of the commit itself',
-
+  txtIssuesRef: 'Add issue references (e.g. "fix #123", "re #123".)',
+  txtDoCommit: 'Are you sure that you want to commit?'
 };

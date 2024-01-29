@@ -243,7 +243,7 @@ module.exports = function(options) {
         {
           type: 'input',
           name: 'issues',
-          message: 'Add issue references (e.g. "fix #123", "re #123".):\n',
+          message: `${options.txtIssuesRef}:\n`,
           when: function(answers) {
             return answers.isIssueAffected;
           },
@@ -305,7 +305,7 @@ module.exports = function(options) {
           {
             type: 'confirm',
             name: 'doCommit',
-            message: 'Are you sure that you want to commit?'
+            message: options.txtDoCommit
           }
         ]);
 
