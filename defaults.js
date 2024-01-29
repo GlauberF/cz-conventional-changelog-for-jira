@@ -18,9 +18,12 @@ module.exports = {
   jiraAppend: '',
   exclamationMark: false,
 
-  txtJiraIssue: 'Insira o prefixo da tarefa do JIRA',
-  txtType: 'Selecione o tipo de alteração',
+  txtJiraIssue: 'Enter the JIRA task prefix',
+  txtType: 'Select the type of change that you\'re committing',
   txtScope: 'What is the scope of this change (e.g. component or file name)',
   txtScopeListConfirmation: 'select from the list',
   txtScopeInputConfirmation: 'press enter to skip',
+  txtCustomScope: 'Type custom scope (press enter to skip)',
+  txtSubject: 'Write a short, imperative tense description of the change',
+  txtSubjectMinCharacters: 'The subject must have at least {MIN_VALUE} characters',
 };

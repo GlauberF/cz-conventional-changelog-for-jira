@@ -123,7 +123,7 @@ module.exports = function(options) {
           type: 'list',
           name: 'type',
           when: !options.skipType,
-          message: (options.txtType || "Select the type of change that you're committing") + ":",
+          message: `${options.txtType}:`,
           choices: choices,
           default: options.skipType ? '' : options.defaultType
         },
@@ -131,7 +131,7 @@ module.exports = function(options) {
           type: 'input',
           name: 'jira',
           message:
-            (options.txtJiraIssue || 'Enter the JIRA task prefix') + ' (' +
+            `${options.txtJiraIssue} (` +
             getFromOptionsOrDefaults('jiraPrefix') +
             '-12345)' +
             (options.jiraOptional ? ' (optional)' : '') +
@@ -165,12 +165,12 @@ module.exports = function(options) {
           type: 'input',
           name: 'customScope',
           when: (({ scope }) => scope === 'custom'),
-          message: 'Type custom scope (press enter to skip)'
+          message: options.txtCustomScope
         },
         {
           type: 'limitedInput',
           name: 'subject',
-          message: 'Write a short, imperative tense description of the change:',
+          message: `${options.txtSubject}:`,
           default: options.defaultSubject,
           maxLength: maxHeaderWidth - (options.exclamationMark ? 1 : 0),
           leadingLabel: answers => {
@@ -185,7 +185,7 @@ module.exports = function(options) {
           },
           validate: input =>
             input.length >= minHeaderWidth ||
-            `The subject must have at least ${minHeaderWidth} characters`,
+            options.txtSubjectMinCharacters.replace('{MIN_VALUE}', minHeaderWidth),
           filter: function(subject) {
             return filterSubject(subject);
           }
