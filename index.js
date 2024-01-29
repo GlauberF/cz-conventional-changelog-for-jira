@@ -168,10 +168,10 @@ const options = {
 
 (function(options) {
   try {
-    var commitlintLoad = require('@commitlint/load');
+    const commitlintLoad = require('@commitlint/load');
     commitlintLoad().then(function(clConfig) {
       if (clConfig.rules) {
-        var maxHeaderLengthRule = clConfig.rules['header-max-length'];
+        const maxHeaderLengthRule = clConfig.rules['header-max-length'];
         if (
           typeof maxHeaderLengthRule === 'object' &&
           maxHeaderLengthRule.length >= 3 &&

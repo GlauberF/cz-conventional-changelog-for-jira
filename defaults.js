@@ -17,7 +17,6 @@ module.exports = {
   jiraPrepend: '',
   jiraAppend: '',
   exclamationMark: false,
-
   txtJiraIssue: 'Enter the JIRA task prefix',
   txtType: 'Select the type of change that you\'re committing',
   txtScope: 'What is the scope of this change (e.g. component or file name)',
