@@ -1,11 +1,5 @@
 # cz-conventional-changelog-for-jira
 
-Part of the [commitizen/cz-cli](https://github.com/commitizen/cz-cli) family. Prompts for [conventional changelog](https://github.com/conventional-changelog/conventional-changelog) standard and also prompts for a mandatory JIRA issue.
-
-[![npm version](https://img.shields.io/npm/v/@digitalroute/cz-conventional-changelog-for-jira.svg?style=flat-square)](https://www.npmjs.org/package/@digitalroute/cz-conventional-changelog-for-jira)
-[![npm downloads](https://img.shields.io/npm/dm/@digitalroute/cz-conventional-changelog-for-jira.svg?style=flat-square)](http://npm-stat.com/charts.html?package=@digitalroute/cz-conventional-changelog-for-jira)
-[![Build Status](https://img.shields.io/travis/digitalroute/cz-conventional-changelog-for-jira.svg?style=flat-square)](https://travis-ci.org/digitalroute/cz-conventional-changelog-for-jira)
-
 ## Features
 
 - Works seamlessly with semantic-release 🚀
@@ -17,7 +11,7 @@ Part of the [commitizen/cz-cli](https://github.com/commitizen/cz-cli) family. Pr
 ### Installation
 
 ```bash
-npm install commitizen @digitalroute/cz-conventional-changelog-for-jira
+npm install commitizen path_github
 ```
 
 and then add the following to package.json:
@@ -29,7 +23,7 @@ and then add the following to package.json:
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/@digitalroute/cz-conventional-changelog-for-jira"
+      "path": ""
     }
   }
 }
@@ -37,7 +31,7 @@ and then add the following to package.json:
 
 ### Usage
 
-![Gif of terminal when using cz-conventional-changelog-for-jira](https://raw.githubusercontent.com/digitalroute/cz-conventional-changelog-for-jira/master/images/demo.gif)
+gif aqui
 
 ## Configuration
 
@@ -81,7 +75,6 @@ Like commitizen, you can specify the configuration of cz-conventional-changelog-
 | CZ_TXT_ISSUES_BODY              | txtIssuesBody    | "If issues are closed, the commit requires a body. Please enter a longer description of the commit itself" | The text to guide the user |
 | CZ_TXT_ISSUES_REF               | txtIssuesRef    | "Add issue references (e.g. "fix #123", "re #123".)" | The text to guide the user |
 | CZ_TXT_DO_COMMIT                | txtDoCommit    | "Are you sure that you want to commit?" | The text to guide the user |
-
 
 
 ### Jira Location Options
