@@ -1,22 +1,22 @@
 'format cjs';
 
-var wrap = require('word-wrap');
-var map = require('lodash.map');
-var longest = require('longest');
-var rightPad = require('right-pad');
-var chalk = require('chalk');
+const wrap = require('word-wrap');
+const map = require('lodash.map');
+const longest = require('longest');
+const rightPad = require('right-pad');
+const chalk = require('chalk');
 const { execSync } = require('child_process');
 const boxen = require('boxen');
 
-var defaults = require('./defaults');
+const defaults = require('./defaults');
 const LimitedInputPrompt = require('./LimitedInputPrompt');
-var filter = function(array) {
+const filter = function(array) {
   return array.filter(function(x) {
     return x;
   });
 };
 
-var filterSubject = function(subject) {
+const filterSubject = function(subject) {
   subject = subject.trim();
   while (subject.endsWith('.')) {
     subject = subject.slice(0, subject.length - 1);
@@ -28,10 +28,10 @@ var filterSubject = function(subject) {
 // We use Commonjs here, but ES6 or AMD would do just
 // fine.
 module.exports = function(options) {
-  var getFromOptionsOrDefaults = function(key) {
+  const getFromOptionsOrDefaults = function(key) {
     return options[key] || defaults[key];
   };
-  var getJiraIssueLocation = function(
+  const getJiraIssueLocation = function(
     location,
     type = '',
     scope = '',
@@ -67,10 +67,10 @@ module.exports = function(options) {
     return jiraIssue ? `${prepend}${jiraIssue}${append} `: '';
   }
 
-  var types = getFromOptionsOrDefaults('types');
+  const types = getFromOptionsOrDefaults('types');
 
-  var length = longest(Object.keys(types)).length + 1;
-  var choices = map(types, function(type, key) {
+  const length = longest(Object.keys(types)).length + 1;
+  const choices = map(types, function(type, key) {
     return {
       name: rightPad(key + ':', length) + ' ' + type.description,
       value: key
@@ -92,9 +92,9 @@ module.exports = function(options) {
   const customScope = !options.skipScope && hasScopes && options.customScope;
   const scopes = customScope ? [...options.scopes, 'custom' ]: options.scopes;
 
-  var getProvidedScope = function(answers) {
+  const getProvidedScope = function(answers) {
     return answers.scope === 'custom' ? answers.customScope : answers.scope;
-  }
+  };
 
   return {
     // When a user runs `git cz`, prompter will
@@ -227,7 +227,7 @@ module.exports = function(options) {
           type: 'confirm',
           name: 'isIssueAffected',
           message: 'Does this change affect any open issues?',
-          default: options.defaultIssues ? true : false,
+          default: !!options.defaultIssues,
           when: !options.jiraMode
         },
         {
@@ -252,7 +252,7 @@ module.exports = function(options) {
           default: options.defaultIssues ? options.defaultIssues : undefined
         }
       ]).then(async function(answers) {
-        var wrapOptions = {
+        const wrapOptions = {
           trim: true,
           cut: false,
           newline: '\n',
@@ -262,7 +262,7 @@ module.exports = function(options) {
 
         // parentheses are only needed when a scope is present
         const providedScope = getProvidedScope(answers);
-        var scope = providedScope ? '(' + providedScope + ')' : '';
+        let scope = providedScope ? '(' + providedScope + ')' : '';
 
         const addExclamationMark = options.exclamationMark && answers.breaking;
         scope = addExclamationMark ? scope + '!' : scope;
@@ -274,7 +274,7 @@ module.exports = function(options) {
         const head = getJiraIssueLocation(options.jiraLocation, answers.type, scope, jiraWithDecorators, answers.subject);
 
         // Wrap these lines at options.maxLineWidth characters
-        var body = answers.body ? wrap(answers.body, wrapOptions) : false;
+        let body = answers.body ? wrap(answers.body, wrapOptions) : false;
         if (options.jiraMode && options.jiraLocation === 'post-body') {
           if (body === false) {
             body = '';
@@ -285,13 +285,13 @@ module.exports = function(options) {
         }
 
         // Apply breaking change prefix, removing it if already present
-        var breaking = answers.breaking ? answers.breaking.trim() : '';
+        let breaking = answers.breaking ? answers.breaking.trim() : '';
         breaking = breaking
           ? 'BREAKING CHANGE: ' + breaking.replace(/^BREAKING CHANGE: /, '')
           : '';
         breaking = breaking ? wrap(breaking, wrapOptions) : false;
 
-        var issues = answers.issues ? wrap(answers.issues, wrapOptions) : false;
+        const issues = answers.issues ? wrap(answers.issues, wrapOptions) : false;
 
         const fullCommit = filter([head, body, breaking, issues]).join('\n\n');
 
