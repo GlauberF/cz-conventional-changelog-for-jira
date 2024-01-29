@@ -1,6 +1,6 @@
-var engine = require('./engine');
-var defaults = require('./defaults');
+const engine = require('./engine');
+const defaults = require('./defaults');
 
-module.exports = function(overridenOptions) {
-  return engine({ ...defaults, ...overridenOptions });
+module.exports = function(overrideOptions) {
+  return engine({ ...defaults, ...overrideOptions });
 };
